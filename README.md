@@ -15,7 +15,7 @@ Here's a demo of the plugin in action:<br>
   - [Config](#config)
 - [Contributing](#contributing)
 - [test]}(#test)
-#test
+# test
 
 ## Background
 Larger Minecraft servers that employ resource packs have been using these tab-completable emojis for ages. Origin Realms, Mineclub, and some upcoming servers come to mind. However, no plugin to replicate this was available to the public. Thus, EmojiTab was born.
