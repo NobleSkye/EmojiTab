@@ -14,7 +14,7 @@ Here's a demo of the plugin in action:<br>
   - [Commands](#commands)
   - [Config](#config)
 - [Contributing](#contributing)
-- [test]}(#test)
+- [test](#test)
 ## test
 
 ## Background
