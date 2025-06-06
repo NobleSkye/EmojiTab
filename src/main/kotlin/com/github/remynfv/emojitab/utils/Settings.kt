@@ -1,28 +1,44 @@
 package com.github.remynfv.emojitab.utils
 
 import org.bukkit.entity.Player
+import java.util.*
 
-object Settings
-{
+/**
+ * Manages player-specific settings like emoji toggle state.
+ */
+object Settings {
+    
+    private val disabledPlayers = mutableSetOf<UUID>()
+    
     /**
-     * Emojis being disabled hides them from tab-complete.
-     * It does not prevent you from using them at present.
-     *
-     * @return Whether this player has toggled emojis off.
+     * Checks if emojis are disabled for the given player.
      */
-    fun getEmojiDisabled(player: Player): Boolean
-    {
-        //Get metadata to find out if emojis are already toggled
-        var emojisOff = false
-        for (meta in player.getMetadata("emoji_off"))
-        {
-            if (meta.asBoolean())
-            {
-                emojisOff = meta.asBoolean()
-                break
-            }
+    fun getEmojiDisabled(player: Player): Boolean {
+        return disabledPlayers.contains(player.uniqueId)
+    }
+    
+    /**
+     * Sets the emoji disabled state for the given player.
+     */
+    fun setEmojiDisabled(player: Player, disabled: Boolean) {
+        if (disabled) {
+            disabledPlayers.add(player.uniqueId)
+        } else {
+            disabledPlayers.remove(player.uniqueId)
         }
-
-        return emojisOff
+    }
+    
+    /**
+     * Clears all player settings (useful for plugin reload).
+     */
+    fun clearAllSettings() {
+        disabledPlayers.clear()
+    }
+    
+    /**
+     * Gets the number of players who have emojis disabled.
+     */
+    fun getDisabledPlayerCount(): Int {
+        return disabledPlayers.size
     }
 }
